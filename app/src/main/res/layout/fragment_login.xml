@@ -10,8 +10,12 @@
     android:paddingLeft="@dimen/fragment_horizontal_margin"
     android:paddingTop="@dimen/fragment_vertical_margin"
     android:paddingRight="@dimen/fragment_horizontal_margin"
-    android:paddingBottom="@dimen/fragment_vertical_margin"
-    tools:context=".ui.login.LoginFragment">
+    android:paddingBottom="@dimen/fragment_vertical_margin">
+
+    <FrameLayout
+        android:id="@+id/fragmentContainerView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/loginTitle"
@@ -105,6 +109,14 @@
         android:gravity="center">
 
         <ImageView
+            android:id="@+id/fb_btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+
+            android:layout_margin="20dp"
+            android:src="@drawable/facebook1" />
+
+        <ImageView
             android:id="@+id/googleBtn"
             android:layout_width="48dp"
             android:layout_height="48dp"
@@ -113,14 +125,7 @@
             android:src="@drawable/google"
 
             />
-
-        <ImageView
-            android:id="@+id/fb_btn"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-
-            android:layout_margin="20dp"
-            android:src="@drawable/facebook1" />
     </LinearLayout>
+
 </LinearLayout>
 
