@@ -1,22 +1,25 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
-    GoogleSignInClient mGoogleSignInClient;
+    //GoogleSignInClient mGoogleSignInClient;
+    String userEmail;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,14 +55,49 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public void nextScreen() {
+    public void logToReg() {
         FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.logFragS,new FragmentReg()).addToBackStack(null).commit();
+
     }
 
-    public void moveToHomePage() {
+    public void regToLog(){
         FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.logFragS,new HomeFragment()).addToBackStack(null).commit();
+
+        String emailStr=((EditText) findViewById(R.id.emailReg)).getText().toString();
+        String passStr=((EditText) findViewById(R.id.passwordReg)).getText().toString();
+
+        mAuth.createUserWithEmailAndPassword(emailStr,passStr)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            fragmentTransaction.replace(R.id.regFramS,new NFragment()).addToBackStack(null).commit();
+                            Toast.makeText(MainActivity.this,"success to register",Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(MainActivity.this,"faild to register",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+    }
+
+    public void loginFunc() {
+        FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
+
+        String emailLog=((EditText) findViewById(R.id.emailLog)).getText().toString();
+        String passLog=((EditText) findViewById(R.id.passwordLog)).getText().toString();
+        mAuth.signInWithEmailAndPassword(emailLog,passLog)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            userEmail=emailLog;
+                            fragmentTransaction.replace(R.id.logFragS,new HomeFragment()).addToBackStack(null).commit();
+                        } else {
+                            Toast.makeText(MainActivity.this,"hahahaha you faild to login",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
     }
 
     public void moveToLogin() {
@@ -71,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.homeFrag,new NFragment()).addToBackStack(null).commit();
 
-
+        FirebaseAuth.getInstance().signOut();
     }
 
     public void paycheckFragFunc() {

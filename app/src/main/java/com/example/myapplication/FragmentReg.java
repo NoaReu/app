@@ -63,7 +63,7 @@ public class FragmentReg extends Fragment {
             @Override
             public void onClick(View view) {
                 MainActivity mainActivity= (MainActivity) getActivity();
-                mainActivity.moveToLogin();
+                mainActivity.regToLog();
             }
         });
 

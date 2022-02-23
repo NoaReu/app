@@ -10,15 +10,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class NFragment extends Fragment {
     private FirebaseAuth mAuth;
-    GoogleSignInOptions gso;
-    GoogleSignInClient gsc;
+
     ImageView googleBtn;
     // FragmentManager fragmentManager= getChildFragmentManager();
     // TODO: Rename parameter arguments, choose names that match
@@ -77,17 +74,17 @@ public class NFragment extends Fragment {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //check if work - button does not responed
                 MainActivity mainActivity= (MainActivity) getActivity();
-                mainActivity.moveToHomePage();
+
+                mainActivity.loginFunc();
             }
         });
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //check if work - button does not responed
+
                 MainActivity mainActivity= (MainActivity) getActivity();
-                mainActivity.nextScreen();
+                mainActivity.logToReg();
             }
         });
         return view;
@@ -95,7 +92,7 @@ public class NFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
+
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
     }
