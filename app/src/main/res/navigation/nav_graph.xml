@@ -3,28 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/NFragment">
 
-    <fragment
-        android:id="@+id/registerionFragment"
-        android:name="com.example.myapplication.RegisterionFragment"
-        android:label="fragment_registerion"
-        tools:layout="@layout/fragment_registerion" >
-        <action
-            android:id="@+id/action_registerionFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.myapplication.LoginFragment"
-        android:label="LoginFragment" >
-        <action
-            android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_registerionFragment2"
-            app:destination="@id/registerionFragment" />
-    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.myapplication.HomeFragment"
@@ -36,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_shiftFragment"
             app:destination="@id/shiftFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_NFragment"
+            app:destination="@id/NFragment" />
     </fragment>
     <fragment
         android:id="@+id/paycheckFragment"
@@ -47,4 +30,25 @@
         android:name="com.example.myapplication.ShiftFragment"
         android:label="fragment_shift"
         tools:layout="@layout/fragment_shift" />
+    <fragment
+        android:id="@+id/NFragment"
+        android:name="com.example.myapplication.NFragment"
+        android:label="fragment_n"
+        tools:layout="@layout/fragment_n" >
+        <action
+            android:id="@+id/action_NFragment_to_fragmentReg"
+            app:destination="@id/fragmentReg" />
+        <action
+            android:id="@+id/action_NFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentReg"
+        android:name="com.example.myapplication.FragmentReg"
+        android:label="fragment_reg"
+        tools:layout="@layout/fragment_reg" >
+        <action
+            android:id="@+id/action_fragmentReg_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

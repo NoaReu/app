@@ -7,12 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentReg#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class FragmentReg extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -34,7 +31,7 @@ public class FragmentReg extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentReg.
+     * @return A new instance of fragment RegisterionFragment.
      */
     // TODO: Rename and change types and number of parameters
     public static FragmentReg newInstance(String param1, String param2) {
@@ -59,6 +56,17 @@ public class FragmentReg extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reg, container, false);
+        View view= inflater.inflate(R.layout.fragment_reg, container, false);
+        Button regBtnR=(Button) view.findViewById(R.id.regBtnR);
+
+        regBtnR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity mainActivity= (MainActivity) getActivity();
+                mainActivity.moveToLogin();
+            }
+        });
+
+        return view;
     }
 }

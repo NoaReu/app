@@ -1,14 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/logFragS"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:onClick="nextScreen"
+    android:orientation="vertical"
     tools:context=".NFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/loginTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="50dp"
+            android:gravity="center"
+            android:text="Login"
+            android:textColor="@color/white"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/emailLog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/loginTitle"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="96dp"
+            android:layout_marginEnd="24dp"
+            android:drawableLeft="@drawable/ic_baseline_email_24"
+            android:hint="@string/prompt_email"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp"
+            android:selectAllOnFocus="true"
+            android:textColorHint="@color/white"
+            android:textStyle="italic" />
+
+        <EditText
+            android:id="@+id/passwordLog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/emailLog"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:drawableLeft="@drawable/ic_baseline_fingerprint_24"
+            android:hint="@string/prompt_password"
+            android:imeActionLabel="@string/action_sign_in_short"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:selectAllOnFocus="true"
+            android:textColorHint="@color/white" />
+
+        <Button
+            android:id="@+id/loginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="64dp"
+            android:backgroundTint="@color/design_default_color_secondary"
+            android:enabled="true"
+            android:gravity="center"
+            android:text="Login in"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/registerBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="64dp"
+            android:backgroundTint="@color/design_default_color_secondary"
+            android:enabled="true"
+            android:gravity="center"
+            android:onClick="nextScreen"
+            android:text="Register"
+            android:textColor="@color/white" />
+
+        <LinearLayout
+            android:id="@+id/socialIcons"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/fb_btn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+
+                android:layout_margin="20dp"
+                android:src="@drawable/facebook1" />
+
+            <ImageView
+                android:id="@+id/googleBtn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+
+                android:layout_margin="20dp"
+                android:src="@drawable/google"
+
+                />
+        </LinearLayout>
+    </LinearLayout>
 </FrameLayout>
