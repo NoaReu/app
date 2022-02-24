@@ -61,6 +61,25 @@
             android:layout_marginEnd="50dp"
             android:layout_marginBottom="10dp"/>
 
+        <FrameLayout
+            android:id="@+id/paycheckFragRes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/headLinePayResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="paycheck result"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/payResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </FrameLayout>
+
     </LinearLayout>
 
 </FrameLayout>
