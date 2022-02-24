@@ -4,9 +4,12 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.renderscript.Sampler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,6 +52,7 @@ public class PaycheckFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -59,6 +63,22 @@ public class PaycheckFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_paycheck, container, false);
+        View view= inflater.inflate(R.layout.fragment_paycheck, container, false);
+
+        Spinner spinMonth = (Spinner) view.findViewById(R.id.spinMonth);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                R.array.Month_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinMonth.setAdapter(adapter);
+
+        Spinner spinYear = (Spinner) view.findViewById(R.id.spinYear);
+
+        ArrayAdapter<CharSequence> adapterY = ArrayAdapter.createFromResource(getContext(),
+                R.array.Years_array, android.R.layout.simple_spinner_item);
+        adapterY.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinYear.setAdapter(adapterY);
+        return  view;
     }
 }

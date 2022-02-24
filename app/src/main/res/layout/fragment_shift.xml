@@ -12,5 +12,76 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"></LinearLayout>
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="35dp"
+            android:text="Select your shifts"
+            android:textStyle="bold"/>
+
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="10dp"
+            />
+
+        <CheckBox
+            android:id="@+id/MorningBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Morning"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="10dp"
+            android:textStyle="bold"/>
+
+        <CheckBox
+            android:id="@+id/NoonBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Noon"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="10dp"
+            android:textStyle="bold"/>
+
+        <CheckBox
+            android:id="@+id/eveningBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Evening"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="10dp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:backgroundTint="@color/design_default_color_secondary"
+            android:textColor="@color/white"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="10dp"
+            />
+    </LinearLayout>
 </FrameLayout>
