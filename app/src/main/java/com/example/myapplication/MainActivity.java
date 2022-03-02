@@ -21,6 +21,12 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
     //GoogleSignInClient mGoogleSignInClient;
     String userEmail;
+
+    //should we do those as static attributes???
+    int shiftNum;
+    int shiftDay;
+    int shiftMonth;
+    int shiftYear;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);*/
+        shiftNum=0;
+        shiftDay=0;
+        shiftMonth=0;
+        shiftYear=0;
         fragmentManager= getSupportFragmentManager();
         FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.LogfragmentCon,new NFragment()).commit();
@@ -125,8 +135,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void pickADay(CalendarView calendarView) {
-        Toast.makeText(this, calendarView.getDateTextAppearance()+"", Toast.LENGTH_LONG).show();
+    public void pickADay(CalendarView calendarView,int day, int month, int year) {
+
+        this.shiftDay=day;
+        this.shiftMonth=month+1;
+        this.shiftYear = year;
+
+        String date = day + "/" + month+1 + "/" + year ;
+        Toast.makeText(this, date, Toast.LENGTH_LONG).show();
+
+    }
+
+    public void setShiftPick(int sNum) {
+        this.shiftNum=sNum;
+
+    }
+
+
+    public void updateNewShift() {
+        //Todo: if every thing is good- send the new shift to the firebase
+
+        //get from firebase the shifts of this date for this user.
+
+        //if it is empty - create the new date at the firebase
+
+        //else: if the parameters are not the same as returned from firebase- update firebase
 
     }
 }

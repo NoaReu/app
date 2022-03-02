@@ -2,12 +2,15 @@ package com.example.myapplication;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 /**
@@ -21,6 +24,7 @@ public class ShiftFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    MainActivity mainActivity;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -67,16 +71,52 @@ public class ShiftFragment extends Fragment {
 
 
         CalendarView calendarView = (CalendarView) view.findViewById(R.id.calendarView);
-        calendarView.setOnClickListener(new View.OnClickListener() {
+        CheckBox morningCheckBox = (CheckBox) view.findViewById(R.id.MorningBox);
+        CheckBox noonCheckBox = (CheckBox) view.findViewById(R.id.NoonBox);
+        CheckBox eveningCheckBox = (CheckBox) view.findViewById(R.id.eveningBox);
+        Button submitBtn = (Button) view.findViewById(R.id.submitBtn);
+
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onClick(View view) {
-                MainActivity mainActivity= (MainActivity) getActivity();
-                mainActivity.pickADay(calendarView);
-
-
-//                Toast.makeText(MainActivity,"dsfghf ",Toast.LENGTH_SHORT).show();
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) { // year month day
+                mainActivity= (MainActivity) getActivity();
+//                the month is counted from 0 so we needed to add 1 to present the correct month
+//                String date = i2 + "/" + i1+1 + "/" + i ;
+                mainActivity.pickADay(calendarView, i2 , i1 ,1);
             }
         });
+
+        morningCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivity= (MainActivity) getActivity();
+                mainActivity.setShiftPick(1);
+            }
+        });
+        noonCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivity= (MainActivity) getActivity();
+                mainActivity.setShiftPick(2);
+            }
+        });
+        eveningCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivity= (MainActivity) getActivity();
+                mainActivity.setShiftPick(3);
+            }
+        });
+
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivity= (MainActivity) getActivity();
+                mainActivity.updateNewShift();
+            }
+        });
+
+//                Toast.makeText(MainActivity,"dsfghf ",Toast.LENGTH_SHORT).show();
 
 
         return view;
