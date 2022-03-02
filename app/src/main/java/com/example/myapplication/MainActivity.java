@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -121,6 +122,11 @@ public class MainActivity extends AppCompatActivity {
     public void shiftsFragFunc() {
         FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.homeFrag,new ShiftFragment()).addToBackStack(null).commit();
+
+    }
+
+    public void pickADay(CalendarView calendarView) {
+        Toast.makeText(this, calendarView.getDateTextAppearance()+"", Toast.LENGTH_LONG).show();
 
     }
 }

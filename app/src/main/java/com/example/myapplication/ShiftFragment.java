@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +61,24 @@ public class ShiftFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shift, container, false);
+        View view =  inflater.inflate(R.layout.fragment_shift, container, false);
+
+//        MainActivity mainActivity =
+
+
+        CalendarView calendarView = (CalendarView) view.findViewById(R.id.calendarView);
+        calendarView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity mainActivity= (MainActivity) getActivity();
+                mainActivity.pickADay(calendarView);
+
+
+//                Toast.makeText(MainActivity,"dsfghf ",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        return view;
     }
 }
