@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+
+import com.example.myapplication.objects.UserPojo;
 
 
 public class FragmentReg extends Fragment {
@@ -56,13 +59,22 @@ public class FragmentReg extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_reg, container, false);
-        Button regBtnR=(Button) view.findViewById(R.id.regBtnR);
+        View view = inflater.inflate(R.layout.fragment_reg, container, false);
+        Button regBtnR = (Button) view.findViewById(R.id.regBtnR);
 
         regBtnR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainActivity mainActivity= (MainActivity) getActivity();
+                MainActivity mainActivity = (MainActivity) getActivity();
+//                mainActivity.userEmail= ((EditText)view.findViewById(R.id.emailReg)).getText().toString();
+//                mainActivity.userName= ((EditText)view.findViewById(R.id.usernameReg)).getText().toString();
+                UserPojo userPojo = new UserPojo();
+
+                userPojo.setEmail(((EditText)view.findViewById(R.id.emailReg)).getText().toString());
+                userPojo.setUserName(((EditText)view.findViewById(R.id.usernameReg)).getText().toString());
+//                userPojo.setCompany(((EditText)view.findViewById(R.id.companyReg)).getText().toString());
+
+
                 mainActivity.regToLog();
             }
         });

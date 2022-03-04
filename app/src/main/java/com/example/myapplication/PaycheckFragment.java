@@ -63,7 +63,7 @@ public class PaycheckFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_paycheck, container, false);
+        View view = inflater.inflate(R.layout.fragment_paycheck, container, false);
 
         Spinner spinMonth = (Spinner) view.findViewById(R.id.spinMonth);
 
@@ -79,6 +79,6 @@ public class PaycheckFragment extends Fragment {
                 R.array.Years_array, android.R.layout.simple_spinner_item);
         adapterY.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinYear.setAdapter(adapterY);
-        return  view;
+        return view;
     }
 }

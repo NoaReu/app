@@ -65,7 +65,7 @@ public class ShiftFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_shift, container, false);
+        View view = inflater.inflate(R.layout.fragment_shift, container, false);
 
 //        MainActivity mainActivity =
 
@@ -79,31 +79,31 @@ public class ShiftFragment extends Fragment {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) { // year month day
-                mainActivity= (MainActivity) getActivity();
+                mainActivity = (MainActivity) getActivity();
 //                the month is counted from 0 so we needed to add 1 to present the correct month
 //                String date = i2 + "/" + i1+1 + "/" + i ;
-                mainActivity.pickADay(calendarView, i2 , i1 ,1);
+                mainActivity.pickADay(calendarView, i2, i1, 1);
             }
         });
 
         morningCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivity= (MainActivity) getActivity();
+                mainActivity = (MainActivity) getActivity();
                 mainActivity.setShiftPick(1);
             }
         });
         noonCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivity= (MainActivity) getActivity();
+                mainActivity = (MainActivity) getActivity();
                 mainActivity.setShiftPick(2);
             }
         });
         eveningCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivity= (MainActivity) getActivity();
+                mainActivity = (MainActivity) getActivity();
                 mainActivity.setShiftPick(3);
             }
         });
@@ -111,7 +111,7 @@ public class ShiftFragment extends Fragment {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivity= (MainActivity) getActivity();
+                mainActivity = (MainActivity) getActivity();
                 mainActivity.updateNewShift();
             }
         });

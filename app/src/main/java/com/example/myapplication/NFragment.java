@@ -67,14 +67,14 @@ public class NFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_n, container, false);
-        Button loginBtn=(Button) view.findViewById(R.id.loginBtn);
-        Button registerBtn=(Button) view.findViewById(R.id.registerBtn);
+        View view = inflater.inflate(R.layout.fragment_n, container, false);
+        Button loginBtn = (Button) view.findViewById(R.id.loginBtn);
+        Button registerBtn = (Button) view.findViewById(R.id.registerBtn);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainActivity mainActivity= (MainActivity) getActivity();
+                MainActivity mainActivity = (MainActivity) getActivity();
 
                 mainActivity.loginFunc();
             }
@@ -83,12 +83,13 @@ public class NFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                MainActivity mainActivity= (MainActivity) getActivity();
+                MainActivity mainActivity = (MainActivity) getActivity();
                 mainActivity.logToReg();
             }
         });
         return view;
     }
+
     @Override
     public void onStart() {
         super.onStart();
