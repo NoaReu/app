@@ -7,15 +7,20 @@ public class UserPojo {
     private String userName;
     private String company;
 
-//    UserPojo(String id, String email, String userName, String company){
-//        this.id=id;
-//        this.email= email;
-//        this.userName=userName;
-//        this.company=company;
-//    }
+    public UserPojo(String email, String userName, String company){
+//        this.idn="";
+        this.email= email;
+        this.userName=userName;
+        this.company=company;
+    }
 
 
-    public UserPojo(){}
+    public UserPojo(){
+        this.idn="";
+        this.email= "";
+        this.userName="";
+        this.company="";
+    }
 
     public String getIdn() {
         return idn;

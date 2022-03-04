@@ -2,15 +2,24 @@ package com.example.myapplication;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.myapplication.objects.UserPojo;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class FragmentReg extends Fragment {
@@ -68,14 +77,39 @@ public class FragmentReg extends Fragment {
                 MainActivity mainActivity = (MainActivity) getActivity();
 //                mainActivity.userEmail= ((EditText)view.findViewById(R.id.emailReg)).getText().toString();
 //                mainActivity.userName= ((EditText)view.findViewById(R.id.usernameReg)).getText().toString();
-                UserPojo userPojo = new UserPojo();
+//                UserPojo userPojo = new UserPojo(
+//                        ((EditText)view.findViewById(R.id.emailReg)).getText().toString(),
+//                        ((EditText)view.findViewById(R.id.usernameReg)).getText().toString(),
+//                        ((EditText)view.findViewById(R.id.companyReg)).getText().toString()
+//                );
+                Map<String, Object> user = new HashMap<>();
+                user.put("email",((EditText)view.findViewById(R.id.emailReg)).toString());
+                user.put("userName",((EditText)view.findViewById(R.id.usernameReg)).toString());
+                user.put("company",((EditText)view.findViewById(R.id.companyReg)).toString());
 
-                userPojo.setEmail(((EditText)view.findViewById(R.id.emailReg)).getText().toString());
-                userPojo.setUserName(((EditText)view.findViewById(R.id.usernameReg)).getText().toString());
+//                userPojo.setEmail(((EditText)view.findViewById(R.id.emailReg)).getText().toString());
+//                userPojo.setUserName(((EditText)view.findViewById(R.id.usernameReg)).getText().toString());
 //                userPojo.setCompany(((EditText)view.findViewById(R.id.companyReg)).getText().toString());
 
+                mainActivity.db.collection("users")
+                    .add(user)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Log.d("registration", "DocumentSnapshot added with ID: " + documentReference.getId());
 
-                mainActivity.regToLog();
+                            mainActivity.regToLog();
+                        }
+                    })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w("registration", "Error adding document", e);
+                            }
+                        });
+
+
+
             }
         });
 
