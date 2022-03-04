@@ -89,7 +89,7 @@ public class FragmentReg extends Fragment {
 
 //                userPojo.setEmail(((EditText)view.findViewById(R.id.emailReg)).getText().toString());
 //                userPojo.setUserName(((EditText)view.findViewById(R.id.usernameReg)).getText().toString());
-//                userPojo.setCompany(((EditText)view.findViewById(R.id.companyReg)).getText().toString());
+         //       userPojo.setCompany(((EditText)view.findViewById(R.id.companyReg)).getText().toString());
 
                 mainActivity.db.collection("users")
                     .add(user)

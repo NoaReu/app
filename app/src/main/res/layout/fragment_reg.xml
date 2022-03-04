@@ -42,7 +42,7 @@
             android:hint="User Name"
             android:padding="20dp"
             android:textColor="@color/white"
-            android:textColorHint="@color/white"
+            android:textColorHint="#283593"
 
             />
 
@@ -62,7 +62,7 @@
             android:hint="Email"
             android:padding="20dp"
             android:textColor="@color/white"
-            android:textColorHint="@color/white"
+            android:textColorHint="#283593"
 
             />
 
@@ -82,7 +82,7 @@
             android:inputType="textPassword"
             android:padding="20dp"
             android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:textColorHint="#283593" />
 
         <EditText
             android:id="@+id/companyReg"
@@ -99,7 +99,7 @@
             android:hint="Company"
             android:padding="20dp"
             android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:textColorHint="#283593" />
 
         <Button
             android:id="@+id/regBtnR"
